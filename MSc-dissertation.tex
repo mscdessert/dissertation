@@ -1,0 +1,439 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage{url}
+\usepackage{epcc}
+\usepackage{graphics}
+
+% This example file shows how a thesis can be laid out using Latex. It
+% does not use any special local features so should be portable to other
+% places.
+% 
+% When producing draft copies of a thesis you may want to print only
+% selected pages of the thesis. To do this use the command
+% 
+% dvips -f -p 4 -n 3 myfile.dvi | lpr
+% 
+% where -p 4 means start printing at page 4 (ie the page that will be
+% numbered 4, not necessarily the 4th page) and -n 3 means print 3 pages.
+% This example will print pages 4, 5 and 6.
+% 
+% If you want to print the thesis and also save paper you can print more
+% than one page on each sheet of paper. Use the command
+% 
+% dvips -f myfile.dvi | psnup -2 | lpr
+% 
+% to print 2 pages per sheet. psnup can take values 2, 4, 8, or 9.
+%
+% To produce a PDF version you can create a PostScript copy first
+%
+% dvips -f myfile.dvi > myfile.pdf
+%
+% and then convert it
+%
+% distill myfile.ps
+%
+% or you can go straight to PDF
+%
+% pdflatex myfile
+%
+% Note that pdflatex expects all included figures to be in PDF too. See
+% the includegraphics command below.
+
+
+% This document contains many cross-references and forward references,
+% eg in constructing a table of contents, so Latex may need to be run
+% twice to get all the references correct. If you need to run Latex twice
+% you may get the warning:
+% 
+% LaTeX Warning: Label(s) may have changed. Rerun to get cross-refSerences right.
+
+
+% the following 4 lines are the content of the smallmargins.sty file
+% but including them explicitly makes this more portable.
+%AC%\oddsidemargin=0.1in
+%AC%\topmargin=-0.5in
+%AC%\textheight=9in
+%AC%\textwidth=6.25in
+
+%AC%\parskip 10pt
+%AC%\parindent 0in
+
+\begin{document}
+
+
+%AC%\pagestyle{myheadings}
+%AC%\markright{D.~S.~Henty}
+
+%\title{A Latex thesis example}
+%\author{D.~S.~Henty}
+%\date{\today}
+
+%\maketitle
+
+\pagenumbering{roman}
+
+\title{Exploiting Private and Hybrid Clouds for Data-intensive Computing}
+\author{Roshan.~T.~M}
+\date{\today}
+
+\makeEPCCtitle
+
+\thispagestyle{empty}
+
+\vspace{12cm}
+
+\begin{center}
+
+\large{MSc in High Performance Computing}
+
+\large{The University of Edinburgh}
+
+\large{Year of Presentation: 2012}
+
+\end{center}
+
+\newpage
+
+\begin{abstract}
+
+With the advent of the internet, social networks and
+the ever increasing number of mobile devices which
+help people stay networked, there has been an out burst of unstructured data.
+[Amount of data produced] [Reference for unstructured]. There is a potential 
+gold mine of information hidden within the data originating from social networks
+like Twitter[], Facebook [], Google Plus[] etc. Social networks contain data 
+about products people use, what they like and also about their expectations
+about a product. A business management team 
+can make valuable decisions if necessary information can be extracted from this data
+and be made availale to them.
+The challenge lies in extracting useful information within a reasonable 
+amount of time. The key to extracting useful information with a reasonable
+time-frame is distributed data processing.
+
+This work investigates the usage of an open source cloud management toolkit,
+OpenNebula [] , along with an open source distributed data processing framework,
+Apache Hadoop [] to solve this problem. The benefits of using such an approach
+along with the issues it raises are explained. OpenNebula is used to
+create a private cloud which provides the infrastructure to build an Apache Hadoop cluster.
+ 
+The distributed data processing framework is benchmarked for its performance
+in the private cloud platform. The input/ouput throughput of the framework and
+the performance of a word-count application obtained
+with varying number of nodes in the cluster is measured and reported. 
+
+Two applications that perform social media analytics are developed. The first
+application extracts all the tweets[] related to London 2012 Olympics
+from Twitter and measure the tone of the tweets which provides 
+information on how people feel about the Olympics. The second application
+extracts all the public tweets and then provides a summary of tweet source,
+ie the device people use for tweeting. This information can be used by businesses
+to identify potential marketing medium for a product or an event.
+
+OpenNebula and Apache Hadoop proved to be one of pausible solutions to solving
+data-intensive problems, however depending on the work-load of the application,
+there are factors that limit performance because of Apache Hadoop cluster nodes having to share the physical
+resources like hard-disk IO and the network bandwidth.
+
+
+\end{abstract}
+
+\pagenumbering{roman}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{titlepage}
+\vspace*{2in}
+% an acknowledgements section is completely optional but if you decide
+% not to include it you should still include an empty {titlepage}
+% environment as this initialises things like section and page numbering.
+\section*{Acknowledgements}
+
+This template is a slightly modified version of the one developed by
+Prof. Charles Duncan for MSc students in the Dept. of Meteorology. His
+acknowledgement follows:
+
+{\em This template has been produced with help from many former students who
+have shown different ways of doing things. Please make suggestions for
+further improvements.}
+
+\end{titlepage}
+
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+
+Information is wealth. This statement holds true in all aspects of
+life. In the world of commerce, useful information about a product 
+can help the management team make strategic business decisions
+to improve the product and thus the customer experience. Security establishments
+can take corrective measures or respond quickly to a possible security threat
+if they have sufficient information before an intrusion. In both the cases
+it is very important that the information is made available at the right time. 
+
+\chapter{Background}
+
+\section{Big-data}
+
+{\bf Origin of the term Big-data}
+
+With more than 2.5 quintillion bytes of data \cite{ibm:bigdata} being produced
+every day, every now and then we run into a problem of not having 
+sufficient computing resources to process and extract useful information
+within the required time-frame.
+
+The term big-data is time specific and broadly
+big data can be defined at any point in time as ``data whose size forces us
+ to look beyond the tried-and-true methods
+that are prevalent at that time.`` In the early 1980s, it was a dataset that was
+ so large that a robotic ``tape monkey'' was required to swap thousands of tapes in and out.
+In the 1990s, perhaps, it was any data that transcended the bounds of Microsoft
+Excel and a desktop PC, requiring serious software on Unix workstations to
+analyze. Nowadays, it may mean data 
+that is too large to be placed in a relational database and analyzed with the
+help of a desktop statistics/visualization package-data, perhaps, whose
+analysis requires massively parallel software running on tens, hundreds, or
+even thousands of servers.\cite{jacobs2009pathologies}
+
+The term big-data is more relevant today because 90\% \cite{ibm:bigdata}
+of the data in the world today has been created in the last two years and 
+hence big-data is getting a lot of hype from business publications and IT blogs
+and the mainstream media. 
+
+The shelf-life of the data is short so should be able to act on it before it expires.
+
+Cost effectively process and analyze this database
+
+
+
+Data sources
+
+There is data being generated from everywhere: sensors used to gather geophysical information, 
+posts to social media sites, pictures and videos posted on blogs, transaction
+records from e-commerce sites, and mobile GPS signals to name a few.
+
+According to IBM, the challenges of big-data spans three dimensions: Volume,
+Velocity and Variety.\cite{ibm:bigdata}
+
+Volume:
+
+Enterprises are awash with ever-growing data of all types,
+easily amassing terabytese-ven petabytes-of information.
+
+Enterprises and even small businesses have access to data sources that
+produce terabytes and petabytes of information. The volume of data 
+gives rise to the challenge of processing the data before the shelf-life
+of the data expires. 
+
+Turn 12 terabytes of Tweets created each day into improved product sentiment analysis
+
+Convert 350 billion annual meter readings to better predict power consumption
+
+
+Velocity: Sometimes 2 minutes is too late. For time-sensitive processes such as catching fraud,
+big data must be used as it streams into your enterprise in order to maximize its value.
+
+Scrutinize 5 million trade events created each day to identify potential fraud
+
+Analyze 500 million daily call detail records in real-time to predict customer churn faster
+
+
+Variety: Big data is any type of data - structured and unstructured data such as text,
+sensor data, audio, video, click streams, log files and more. New insights are found when
+analyzing these data types together.
+
+Monitor 100’s of live video feeds from surveillance cameras to target points of interest
+Exploit the 80\% data growth in images, video and documents to improve customer satisfaction
+
+
+
+%In any case, as analyses of ever-larger datasets become routine, the definition will continue to shift, but one
+%thing will remain constant: success at the leading edge will be achieved by
+%those developers who can look past the standard, off-the-shelf techniques
+%and understand the true nature of the
+%hardware resources and the full panoply of algorithms that are available to them
+
+
+
+\cite{ibm:bigdata} 
+
+{\bf Is Big-data refered only to unstructured data ?}
+
+
+{\bf Statistics about the amount of data being generated from Social media}
+
+Big-data is commonly refered to data-sets which cannot be processed on a
+desktop workstation with in a resonable time-frame.
+
+\section{Distributed data processing}
+
+\section{Virtualization}
+
+\section{Cloud Computing}
+
+Cloud computing is a model where a pool of resources (hardware/software) are
+managed to deliver them as virtualised resources on-demand.
+
+
+Cloud Computing was a concept first publicly announced by John McCarthy in 1961 
+(in a speech given to celebrate MIT's centennial). He saw a future in which computing 
+power and even specific applications could be sold through the utility 
+business model (like water or electricity) \cite{garfinkel1999architects} .
+This concept and  supporting technologies evolved over the period and has taken us 
+to the reality where computing resources are served as a utility. 
+Technologies relating to CPU Power, network bandwidth, memory capacity 
+and connectivity have improved dramatically in this period enabling Cloud Computing as 
+a business model.
+
+Cloud Computing is of substantial interest among IT and network technologists
+and academics, as well as CIOs and business leaders, due to its potential to 
+reduce cost and risk, increase revenue, and enhance total customer experience.\cite{weinman2011future}
+It has been difficult to give a concise definition for Cloud Computing 
+and related terms. According to the U.S. National Institute of Standards 
+and Technology (NIST), \cite{mell2009nist}  "Cloud computing is a model for enabling convenient,
+on-demand network access to a shared pool of configurable computing resources
+(e.g., networks, servers, storage, applications, and services) that can 
+be rapidly provisioned and released with minimal management 
+effort or service provider interaction." 
+
+The essential characteristics are \cite{mell2009nist} :
+
+\begin{itemize}
+  \item \emph{On-demand self services.} Provision resources without human
+     interaction with service provider
+  \item \emph{Broad network access.} Resources available over the network
+  \item \emph{Resource pooling.} Resources are pooled to serve multiple 
+        consumers using a multi-tenancy model
+  \item \emph{Rapid elasticity.} Ability to increase or decrease resource consumption
+  \item \emph{Measured service.} Resource usage can be monitored, controlled and reported.
+\end{itemize}
+
+\section{Apache Hadoop}
+
+Apache Hadoop is a software framework for distributed processing of huge data-sets
+using the MapReduce programming model. The Apache Hadoop 
+
+\subsection{Apache MapReduce}
+
+{\bf Google produce MapReduce to process data generated from their web-crawler}
+
+\subsection{Apache HDFS}
+
+\section{OpenNebula}
+
+OpenNebula is an open source toolkit for building and managing virtualized
+cloud infrastructure \cite{website:one}. The OpenNebula tookit provides a flexible
+solution by providing interoperability with multiple hardware and software combinations.
+It supports the Xen, KVM and VMWare hypervisors and provides both command line
+and graphical interfaces to its features.
+
+
+\section{Amazon Web Services (AWS)}
+
+\subsection{Amazon EC2}
+
+\chapter{Cloud Infrastructure Design}
+
+\section{Cloud hardware and software stack}
+\subsection{EPCC machines}
+\subsection{Intel VT-X}
+\subsection{Ubuntu 11.10}
+\subsection{KVM}
+\subsection{Libvirt}
+
+\section{Cloud monitoring}
+\subsection{OpenNebula Sunstone GUI}
+\subsection{Ganglia}
+
+\chapter{Hadoop Cluster Design}
+
+\section{Hadoop software stack}
+\subsection{Cloudera Hadoop distribution}
+\section{Hadoop cluster on Private cloud}
+\section{Hadoop cluster on Hybrid cloud}
+\section{Running a MapReduce program}
+\section{Benchmarking}
+
+
+%\chapter{Experimental design}
+\chapter{Twitter Data Analysis}
+
+\section{Streaming API - Gathering the Tweets}
+
+\subsection{Tweets included in Streaming API}
+
+FROM: https://dev.twitter.com/docs/streaming-api/concepts
+[
+Only non-protected public accounts can create public statuses. 
+Statuses, including replies and mentions, created by a public 
+account are candidates for inclusion in the Streaming API. Statuses 
+created by protected accounts and all direct messages are non-public 
+and are currently not available via the Streaming API, but are 
+available on User Streams and Site Streams.
+]
+
+\subsection{Twitter Policies}
+
+May also want to include more details from
+
+Twitter Search Rules and Restrictions; link same as below
+
+FROM: http://support.twitter.com//forums/10713/entries/42646
+[
+In order to keep your search results relevant, Twitter filters search 
+results for quality. Our search results will not include suspended accounts, 
+or accounts that may jeopardize search quality. Material that degrades 
+search relevancy or creates a bad search experience for 
+people using Twitter may be permanently removed.
+]
+\subsection{Result Quality}
+
+FROM: https://dev.twitter.com/docs/streaming-api/concepts
+[
+Both the Streaming API and the Search API filter, and on some end-points,
+discard, statuses created by a small proportion of accounts based upon status
+quality metrics. For example, frequent and repetitious status updates may,
+in some instances, and in combination with other metrics, result in a
+different status quality score for a given account. Results that are not selected
+by user id, for example: samples and keyword track, are filtered by this
+status quality metric. Results that are selected by user id, currently only
+results from the follow predicate, are unfiltered and allow all
+matching statuses to pass. If an expected user's statuses are not present in a
+non-follow-predicate stream type, manually cross-check the user against Search
+results. If the user's statuses are also not returned in Search, you can assume
+that the user's statuses will not be returned by non-follow-predicated streams.
+]
+
+\section{Processing the Tweets}
+
+\chapter{Results and Analysis}
+
+
+\chapter{Conclusions}
+
+This is the place to put your conclusions about your work. You can
+split it into different sections if appropriate. You may want to include
+a section of future work which could be carried out to continue your
+research.
+
+\appendix
+% the appendix command just changes heading styles for appendices.
+
+\chapter{OpenNebula Configuration Details}
+
+Appendices should contain all the material which is considered too
+detailed to be included in the main bod but which is, nevertheless,
+important enough to be included in the thesis.
+
+\chapter{Hadoop Cluster Configuration Details}
+
+Some  people include in their \cite{fox2009above}thesis a lot of detail, particularly
+computer code, which no-one will ever read. You should be careful that
+anything like this you include \cite{website:aws} should contain some element
+ of \cite{weinman2011future}uniqueness which justifies its inclusion.
+
+\bibliographystyle{plain}
+\bibliography{msc-biblio}
+\end{document}
+
