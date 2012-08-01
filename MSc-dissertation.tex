@@ -4,71 +4,8 @@
 \usepackage{epcc}
 \usepackage{graphics}
 
-% This example file shows how a thesis can be laid out using Latex. It
-% does not use any special local features so should be portable to other
-% places.
-% 
-% When producing draft copies of a thesis you may want to print only
-% selected pages of the thesis. To do this use the command
-% 
-% dvips -f -p 4 -n 3 myfile.dvi | lpr
-% 
-% where -p 4 means start printing at page 4 (ie the page that will be
-% numbered 4, not necessarily the 4th page) and -n 3 means print 3 pages.
-% This example will print pages 4, 5 and 6.
-% 
-% If you want to print the thesis and also save paper you can print more
-% than one page on each sheet of paper. Use the command
-% 
-% dvips -f myfile.dvi | psnup -2 | lpr
-% 
-% to print 2 pages per sheet. psnup can take values 2, 4, 8, or 9.
-%
-% To produce a PDF version you can create a PostScript copy first
-%
-% dvips -f myfile.dvi > myfile.pdf
-%
-% and then convert it
-%
-% distill myfile.ps
-%
-% or you can go straight to PDF
-%
-% pdflatex myfile
-%
-% Note that pdflatex expects all included figures to be in PDF too. See
-% the includegraphics command below.
-
-
-% This document contains many cross-references and forward references,
-% eg in constructing a table of contents, so Latex may need to be run
-% twice to get all the references correct. If you need to run Latex twice
-% you may get the warning:
-% 
-% LaTeX Warning: Label(s) may have changed. Rerun to get cross-refSerences right.
-
-
-% the following 4 lines are the content of the smallmargins.sty file
-% but including them explicitly makes this more portable.
-%AC%\oddsidemargin=0.1in
-%AC%\topmargin=-0.5in
-%AC%\textheight=9in
-%AC%\textwidth=6.25in
-
-%AC%\parskip 10pt
-%AC%\parindent 0in
 
 \begin{document}
-
-
-%AC%\pagestyle{myheadings}
-%AC%\markright{D.~S.~Henty}
-
-%\title{A Latex thesis example}
-%\author{D.~S.~Henty}
-%\date{\today}
-
-%\maketitle
 
 \pagenumbering{roman}
 
@@ -122,7 +59,8 @@ the performance of a word-count application obtained
 with varying number of nodes in the cluster is measured and reported. 
 
 Two applications that perform social media analytics are developed. The first
-application extracts all the tweets[] related to London 2012 Olympics
+application extracts all the tweets\footnote{The message updated in the twitter is called a tweet}
+[] related to London 2012 Olympics
 from Twitter and measure the tone of the tweets which provides 
 information on how people feel about the Olympics. The second application
 extracts all the public tweets and then provides a summary of tweet source,
@@ -206,7 +144,6 @@ The shelf-life of the data is short so should be able to act on it before it exp
 Cost effectively process and analyze this database
 
 
-
 Data sources
 
 There is data being generated from everywhere: sensors used to gather geophysical information, 
@@ -266,7 +203,33 @@ Exploit the 80\% data growth in images, video and documents to improve customer 
 Big-data is commonly refered to data-sets which cannot be processed on a
 desktop workstation with in a resonable time-frame.
 
-\section{Distributed data processing}
+\section{Distributed processing}
+
+As early as 1978, the idea of using multiple autonomous computers to solve a problem were being
+moulded. With the  advent  of  microcomputers and computer networks, distributed processing
+became technically and economically feasible \cite{chu1978distributed}
+
+A distributed system consists of multiple autonomous computers that communicate through a computer network.
+A problem is divided into many tasks, each of which is solved by one or more computers.
+
+Based on physical locality of the computers
+
+Grid computing
+Cluster computing
+
+Based on memory 
+
+Shared memory
+Disributed memory
+
+
+
+
+%\cite{andrews2002foundations}
+
+
+
+
 
 \section{Virtualization}
 
@@ -366,7 +329,26 @@ and graphical interfaces to its features.
 
 \section{Cloud hardware and software stack}
 \subsection{EPCC machines}
-\subsection{Intel VT-X}
+\subsection{Intel VT}
+
+Intel Virtualization Technology provides the hardware support for efficient processor virtualization.
+This hardware technology for virtualization when combined with software based virtualization provides 
+enhanced overall system utilization.\cite{website:intel-VT}
+
+Hardware-based virtualization technologies like the Intel Virtualization Technology
+improves the robustness of software-based virtualization solutions by accelerating
+fundamental functions of the virtualised platform like:\cite{neiger2006intel}
+
+\begin{itemize}
+ \item Speeding up the transfer of platform control between the guest operating systems (OSs) and the virtual machine manager (VMM)/hypervisor like KVM
+ \item Enabling the VMM to uniquely assign I/O devices to guest OSs
+ \item Optimizing the network for virtualization with adapter-based acceleration
+\end{itemize}
+
+
+
+
+
 \subsection{Ubuntu 11.10}
 \subsection{KVM}
 \subsection{Libvirt}
@@ -453,7 +435,7 @@ research.
 
 Appendices should contain all the material which is considered too
 detailed to be included in the main bod but which is, nevertheless,
-important enough to be included in the thesis.
+important enough to be included in the thesis. 
 
 \chapter{Hadoop Cluster Configuration Details}
 
@@ -462,7 +444,10 @@ computer code, which no-one will ever read. You should be careful that
 anything like this you include \cite{website:aws} should contain some element
  of \cite{weinman2011future}uniqueness which justifies its inclusion.
 
+
+
 \bibliographystyle{plain}
 \bibliography{msc-biblio}
 \end{document}
+
 
