@@ -212,44 +212,127 @@ became technically and economically feasible \cite{chu1978distributed}
 A distributed system consists of multiple autonomous computers that communicate through a computer network.
 A problem is divided into many tasks, each of which is solved by one or more computers.
 
-Based on physical locality of the computers
+There are different models of distributed computing like:
 
-Grid computing
-Cluster computing
+\subsection{Grid computing}
 
-Based on memory 
+In a grid computing model the computers are more loosely coupled, heterogeneous, and are geographically dispersed.
+The fundamental strategy of grid computing is to use decentralized control to
+manage its resources.\cite{foster2002grid} A grid employs standard, open, general-purpose protocols and interfaces to enable interoperability between its heterogeneous infrastructure. 
 
-Shared memory
-Disributed memory
+Grig computing is used to solve a variety of computational problems. The famous SETI@home project 
+analyses radio signals from  Arecibo radio telescope\footnote{A radio telescope in the city of 
+Arecibo in Puerto Rico operated by Stanford Research Institute and National Science Foundation},
+searching for signs of extra terrestrial intelligence.
 
+Grid platform like the Berkeley Open Infrastructure for Network Computing
+(BOINC) now allow applications to use GPUs as well.\cite{website:boinc} 
 
+\subsection{Cluster computing}
 
+A cluster is a type of parallel or distributed computer system, which consists of a collection of
+inter-connected stand-alone computers working together as a single integrated computing
+resource\cite{pfister1998cluster}. The computers in a cluster a generally connected 
+by an high performance interconnect. A cluster has a centralized management.
+
+Computer clustering relies on a centralized management approach which makes the nodes available as orchestrated shared servers. It is distinct from other approaches such as peer to peer or grid computing which also use many nodes, but with a far more distributed nature.[3]
 
 %\cite{andrews2002foundations}
 
 
-
-
-
 \section{Virtualization}
+
+% What is virtualization?
+% ----------------------
+
+Virtualization technologies are 
+used to subdivide the ample resources of a modern computer and present the illusion of many
+smaller virtual machines(VMs)\cite{barham2003xen}.
+Virtualization has been applied to operating systems both commercially and in research for nearly forty years.
+IBM VM/370 first made use of virtualization to allow binary support for legacy code \cite{gum1983virt}.
+Advances is virtualization technologies has enabled computing models like the cloud computing which uses
+the virtual machine technology that partition a machine to support the concurrent
+execution of multiple operating systems.
+
+% Types of virtualization?
+% ----------------------
+There are mainly two types of virtualization: \cite{matthews2007quantifying}
+
+\begin{itemize}
+
+ \item \emph{Full virtualization} \\
+  A full virtualization technology allows an unmodified operating system binaries to run as 
+guests \footnote{The operating system running inside of a VM is traditionally referred to as the guest OS} 
+  in a virtual machine. The interface provided by the  virtualization system is the same as the actual physical
+ hardware. An example of full virtualization solution is VMware Workstation\cite{website:vmware} and KVM \cite{website:kvm}
+
+ \item \emph{Paravirtualization} \\
+  In paravirtualization, specific changes are made in the interface provided to a virtual machine to avoid some features that are difficult or expensive to virtualize. This requires that modifications be made in the operating system to deal with this modified interface. The Xen hypervisor \cite{website:xen} uses paravirtualization.
+\end{itemize}
+
+
+% What are the different V technologies available?
+% ------------------------------------------------
+
+
+% Virtual Machine Monitors?
+A hypervisor or virtual machine monitor(VMM) is the software component that allows multiples operating system to run
+concurrently on the same hardware. VMMs virtualize all hardware resources, allowing multiple virtual machines to transparently multiplex the resources of the physical machine; this includes memory translation and I/O mapping.
+
+%Hardware assisted virtualization
+Hardware assisted virtualization is becoming common and is used to get better efficency when doing virtualization. Hardware vendors are rapidly embracing virtualization and developing new features
+to simplify virtualization techniques. First generation enhancements include Intel
+Virtualization Technology (VT-x) and AMD's AMD-V which both target privileged 
+instructions with a new CPU execution mode feature that allows the VMM to run in a privileged mode and thus  sensitive calls are set to automatically trap to the hypervisor, removing the need for either binary translation or paravirtualization \cite{website:vmware}
+
+
+% Benefits of virtualization.
+% ---------------------------
+
+Virtualization provides enables better IT infrastructure management with benefits like \cite{website:intel-VT}:
+
+\begin{itemize}
+  
+\item \emph{Server Consolidation} \\
+Several sever applications that require different operating system and technical specification 
+environment can now be deployed on a single physical machine. Though the server hosting the guest 
+OSs will have more memory, CPU and other hardware, it will use little or no more power and occupy 
+the same physical space and thus reduce real-estate and utility expenditures.
+
+\item \emph{Testing and development} \\
+The use of VMs provides the ability to deploy application is an isolated manner and
+in a controlled environment. System recovery from a crash is much faster as it uses a virtual
+image.
+
+\item \emph{Dynamic Load Balancing and Disaster Recovery} \\
+Virtualization provides the ability for VMs that are over utilizing  the resources of a server to be moved to 
+another server that is underutilized. Such load balancing improves utilization of server resources.
+
+\item \emph{Improved System Reliability and Security} \\
+Virtualization of the hardware prevents system crashes that occur due to memory corruption caused by 
+software device drivers. Virtualization provides methods to better control system devices by defining the
+architecture for DMA and interrupt remapping to ensure improved isolation of I/O resources for greater
+reliability, security, and availability.
+\end{itemize}
 
 \section{Cloud Computing}
 
 Cloud computing is a model where a pool of resources (hardware/software) are
-managed to deliver them as virtualised resources on-demand.
+managed to deliver them as virtualised resources on-demand. Virtualization is the key
+to Cloud computing.
 
 
 Cloud Computing was a concept first publicly announced by John McCarthy in 1961 
 (in a speech given to celebrate MIT's centennial). He saw a future in which computing 
 power and even specific applications could be sold through the utility 
-business model (like water or electricity) \cite{garfinkel1999architects} .
+business model like water or electricity \cite{garfinkel1999architects}.
 This concept and  supporting technologies evolved over the period and has taken us 
 to the reality where computing resources are served as a utility. 
 Technologies relating to CPU Power, network bandwidth, memory capacity 
 and connectivity have improved dramatically in this period enabling Cloud Computing as 
 a business model.
 
-Cloud Computing is of substantial interest among IT and network technologists
+Cloud Computing is of interest among IT and network technologists
 and academics, as well as CIOs and business leaders, due to its potential to 
 reduce cost and risk, increase revenue, and enhance total customer experience.\cite{weinman2011future}
 It has been difficult to give a concise definition for Cloud Computing 
@@ -260,13 +343,17 @@ on-demand network access to a shared pool of configurable computing resources
 be rapidly provisioned and released with minimal management 
 effort or service provider interaction." 
 
+virtual machine monitor (VMM) which enables applications such as server consolidation [42, 8], co-located hosting
+facilities [14], distributed web services [43], secure computing platforms [12, 16] and application
+mobility
+
 The essential characteristics are \cite{mell2009nist} :
 
 \begin{itemize}
   \item \emph{On-demand self services} \\ Provision resources without human
      interaction with service provider
   \item \emph{Broad network access} \\Resources available over the network
-  \item \emph{Resource pooling.} Resources are pooled to serve multiple 
+  \item \emph{Resource pooling} \\ Resources are pooled to serve multiple 
         consumers using a multi-tenancy model
   \item \emph{Rapid elasticity} \\Ability to increase or decrease resource consumption
   \item \emph{Measured service} \\Resource usage can be monitored, controlled and reported.
@@ -329,8 +416,9 @@ and graphical interfaces to its features.
 
 \section{Cloud hardware and software stack}
 \subsection{EPCC machines}
-\subsection{Intel VT}
+\subsection{Intel VT-x}
 
+Intel VT-x is Intel's implementation of hardware-assisted x86 virtualization.
 Intel Virtualization Technology provides the hardware support for efficient processor virtualization.
 This hardware technology for virtualization when combined with software based virtualization provides 
 enhanced overall system utilization.\cite{website:intel-VT}
@@ -351,6 +439,25 @@ fundamental functions of the virtualised platform like:\cite{neiger2006intel}
 
 \subsection{Ubuntu 11.10}
 \subsection{KVM}
+\subsection{QEMU}
+
+QEMU is a fast processor emulator that uses a portable dynamic translator. It supports two operating
+modes: user space only, and full system emulation. In the earlier mode, QEMU can launch Linux processes
+compiled for one CPU on another CPU, or for cross-compilation and cross-debugging. In the later mode, it
+can emulate a full system that includes a processor and several peripheral devices. It supports emulation of a
+number of processor architectures that includes x86, ARM, PowerPC, and Sparc, unlike Bochs that is closed
+tied with the x86 architecture. Like Crusoe, it uses a dynamic translation to native code for reasonable speed.
+In addition, its features include support for self-modifying code and precise exceptions. Both full software
+MMU and simulation through mmap() system call on the host are supported. \cite{chiueh2005survey}
+
+During dynamic translation, it converts a piece of encountered code to the host instruction set. The
+basic idea is to split every x86 instruction (e.g.) into fewer simpler instructions. Each simple instruction
+is implemented by a piece of C code and then a compile time tool takes the corresponding object ﬁle to a
+dynamic code generator which concatenates the simple instructions to build a function. More such tricks
+enable QEMU to be relatively easily portable and simple while achieving high performances. Like Crusoe,
+it also uses a 16MB translation cache and ﬂushes to empty when it gets ﬁlled. It uses a basic block as a
+translation unit. Self-modifying code is a special challenge in x86 emulation because no instruction cache
+
 \subsection{Libvirt}
 
 \section{Cloud monitoring}
