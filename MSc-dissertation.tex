@@ -114,12 +114,13 @@ it is very important that the information is made available at the right time.
 
 \section{Big-data}
 
-{\bf Origin of the term Big-data}
+% Origin of the term Big-data
+% ---------------------------
 
 With more than 2.5 quintillion bytes of data \cite{website:ibm-bigdata} being produced
 every day, every now and then we run into a problem of not having 
 sufficient computing resources to process and extract useful information
-within the required time-frame.
+within our required time-frame.
 
 The term big-data is time specific and broadly
 big data can be defined at any point in time as ``data whose size forces us
@@ -132,16 +133,15 @@ analyze. Nowadays, it may mean data
 that is too large to be placed in a relational database and analyzed with the
 help of a desktop statistics/visualization package-data, perhaps, whose
 analysis requires massively parallel software running on tens, hundreds, or
-even thousands of servers.\cite{jacobs2009pathologies}
+even thousands of servers \cite{jacobs2009pathologies}.
 
 The term big-data is more relevant today because 90\% \cite{website:ibm-bigdata}
 of the data in the world today has been created in the last two years and 
 hence big-data is getting a lot of hype from business publications and IT blogs
 and the mainstream media. 
 
-The shelf-life of the data is short so should be able to act on it before it expires.
-
-Cost effectively process and analyze this database
+The shelf-life of the data is short so we should be able to process the data cost effectively,
+before its shelf-life expires.
 
 
 Data sources
@@ -151,10 +151,13 @@ posts to social media sites, pictures and videos posted on blogs, transaction
 records from e-commerce sites, and mobile GPS signals to name a few.
 
 According to IBM, the challenges of big-data spans three dimensions: Volume,
-Velocity and Variety.\cite{website:ibm-bigdata}
+Velocity and Variety \cite{website:ibm-bigdata}.
 
-Volume:
+\begin{itemize}
+  
 
+
+\item \emph{Volume} \\
 Enterprises are awash with ever-growing data of all types,
 easily amassing terabytese-ven petabytes-of information.
 
@@ -168,7 +171,8 @@ Turn 12 terabytes of Tweets created each day into improved product sentiment ana
 Convert 350 billion annual meter readings to better predict power consumption
 
 
-Velocity: Sometimes 2 minutes is too late. For time-sensitive processes such as catching fraud,
+\item \emph{Velocity} \\
+Sometimes 2 minutes is too late. For time-sensitive processes such as catching fraud,
 big data must be used as it streams into your enterprise in order to maximize its value.
 
 Scrutinize 5 million trade events created each day to identify potential fraud
@@ -176,14 +180,15 @@ Scrutinize 5 million trade events created each day to identify potential fraud
 Analyze 500 million daily call detail records in real-time to predict customer churn faster
 
 
-Variety: Big data is any type of data - structured and unstructured data such as text,
+\item \emph{Variety} \\
+Big data is any type of data - structured and unstructured data such as text,
 sensor data, audio, video, click streams, log files and more. New insights are found when
 analyzing these data types together.
 
-Monitor 100’s of live video feeds from surveillance cameras to target points of interest
+Monitor 100's of live video feeds from surveillance cameras to target points of interest
 Exploit the 80\% data growth in images, video and documents to improve customer satisfaction
 
-
+\end{itemize}
 
 %In any case, as analyses of ever-larger datasets become routine, the definition will continue to shift, but one
 %thing will remain constant: success at the leading edge will be achieved by
@@ -376,14 +381,29 @@ portability.
 
 \section{Apache Hadoop}
 
-Apache Hadoop is a software framework for distributed processing of huge data-sets
-using the MapReduce programming model. The Apache Hadoop 
+Apache Hadoop \cite{website:apache-hadoop} is a top-level Apache project that includes open source implementations of a distributed file system \cite{website:apache-hdfs} and MapReduce that was inspired by Google's GFS
+\cite{ghemawat2003google} and MapReduce \cite{dean2008mapreduce} projects.
 
 The open source Apache Hadoop software library is a framework that 
-allows the distributed processing of large data sets across clusters of 
-computers using the MapReduce programming model \cite{website:apache-hadoop}. It also provides 
-a distributed ﬁle system, the Hadoop Distributed File System, that provides 
+allows the distributed processing of large data sets across computer cluster using the MapReduce programming model \cite{website:apache-hadoop}. It has a distributed file system, the Hadoop Distributed File System, that provides 
 high-throughput access to application data.
+
+Facebook uses the Apache Hadoop platform to run it messages application \footnote {Facebook Messages gives every 
+Facebook user a facebook.com email address, integrates the display of all e-mail, SMS and chat messages between a pair or group of users, has strong controls over who users receive messages from, and is the foundation of a Social Inbox\cite{borthakur2011apache}.}. Hadoop was chosen because it met the application's reqirements for consistency, availability, partition tolerance, data model and scalability \cite{borthakur2011apache}.
+
+
+The Hadoop ecosystem also includes projects like:\cite{website:apache-hadoop}
+
+\begin{itemize}
+\item \emph{Avro:} A data serialization system.
+\item \emph{Cassandra:} A scalable multi-master database with no single points of failure.
+\item \emph{Chukwa:} A data collection system for managing large distributed systems.
+\item \emph{HBase:} A scalable, distributed database that supports structured data storage for large tables. This was inspired by Google's BigTable.
+\item \emph{Hive:} A data warehouse infrastructure built on top of Hadoop that provides data summarization and ad hoc querying.
+\item \emph{Mahout:} A Scalable machine learning and data mining library.
+\item \emph{Pig:} A high-level data-flow language and execution framework for parallel computation.
+\item \emph{ZooKeeper:} A high-performance coordination service for distributed applications.
+\end{itemize}
 
 \subsection{Apache MapReduce}
 
