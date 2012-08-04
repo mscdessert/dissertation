@@ -117,7 +117,7 @@ it is very important that the information is made available at the right time.
 % Origin of the term Big-data
 % ---------------------------
 
-With more than 2.5 quintillion bytes of data \cite{website:ibm-bigdata} being produced
+With more than 2.5 quintillion bytes of data\cite{website:ibm-bigdata} being produced
 every day, every now and then we run into a problem of not having 
 sufficient computing resources to process and extract useful information
 within our required time-frame.
@@ -133,9 +133,9 @@ analyze. Nowadays, it may mean data
 that is too large to be placed in a relational database and analyzed with the
 help of a desktop statistics/visualization package-data, perhaps, whose
 analysis requires massively parallel software running on tens, hundreds, or
-even thousands of servers \cite{jacobs2009pathologies}.
+even thousands of servers\cite{jacobs2009pathologies}.
 
-The term big-data is more relevant today because 90\% \cite{website:ibm-bigdata}
+The term big-data is more relevant today because 90\%\cite{website:ibm-bigdata}
 of the data in the world today has been created in the last two years and 
 hence big-data is getting a lot of hype from business publications and IT blogs
 and the mainstream media. 
@@ -151,7 +151,7 @@ posts to social media sites, pictures and videos posted on blogs, transaction
 records from e-commerce sites, and mobile GPS signals to name a few.
 
 According to IBM, the challenges of big-data spans three dimensions: Volume,
-Velocity and Variety \cite{website:ibm-bigdata}.
+Velocity and Variety\cite{website:ibm-bigdata}.
 
 \begin{itemize}
   
@@ -212,7 +212,7 @@ desktop workstation with in a resonable time-frame.
 
 As early as 1978, the idea of using multiple autonomous computers to solve a problem were being
 moulded. With the  advent  of  microcomputers and computer networks, distributed processing
-became technically and economically feasible \cite{chu1978distributed}
+became technically and economically feasible\cite{chu1978distributed}
 
 A distributed system consists of multiple autonomous computers that communicate through a computer network.
 A problem is divided into many tasks, each of which is solved by one or more computers.
@@ -254,14 +254,14 @@ Virtualization technologies are
 used to subdivide the ample resources of a modern computer and present the illusion of many
 smaller virtual machines(VMs)\cite{barham2003xen}.
 Virtualization has been applied to operating systems both commercially and in research for nearly forty years.
-IBM VM/370 first made use of virtualization to allow binary support for legacy code \cite{gum1983virt}.
+IBM VM/370 first made use of virtualization to allow binary support for legacy code\cite{gum1983virt}.
 Advances is virtualization technologies has enabled computing models like the cloud computing which uses
 the virtual machine technology that partition a machine to support the concurrent
 execution of multiple operating systems.
 
 % Types of virtualization?
 % ----------------------
-There are mainly two types of virtualization: \cite{matthews2007quantifying}
+There are mainly two types of virtualization:\cite{matthews2007quantifying}
 
 \begin{itemize}
 
@@ -272,7 +272,7 @@ guests \footnote{The operating system running inside of a VM is traditionally re
  hardware. An example of full virtualization solution is VMware Workstation\cite{website:vmware} and KVM \cite{website:kvm}
 
  \item \emph{Paravirtualization} \\
-  In paravirtualization, specific changes are made in the interface provided to a virtual machine to avoid some features that are difficult or expensive to virtualize. This requires that modifications be made in the operating system to deal with this modified interface. The Xen hypervisor \cite{website:xen} uses paravirtualization.
+  In paravirtualization, specific changes are made in the interface provided to a virtual machine to avoid some features that are difficult or expensive to virtualize. This requires that modifications be made in the operating system to deal with this modified interface. The Xen hypervisor\cite{website:xen} uses paravirtualization.
 \end{itemize}
 
 
@@ -288,13 +288,13 @@ concurrently on the same hardware. VMMs virtualize all hardware resources, allow
 Hardware assisted virtualization is becoming common and is used to get better efficency when doing virtualization. Hardware vendors are rapidly embracing virtualization and developing new features
 to simplify virtualization techniques. First generation enhancements include Intel
 Virtualization Technology (VT-x) and AMD's AMD-V which both target privileged 
-instructions with a new CPU execution mode feature that allows the VMM to run in a privileged mode and thus  sensitive calls are set to automatically trap to the hypervisor, removing the need for either binary translation or paravirtualization \cite{website:vmware}
+instructions with a new CPU execution mode feature that allows the VMM to run in a privileged mode and thus  sensitive calls are set to automatically trap to the hypervisor, removing the need for either binary translation or paravirtualization\cite{website:vmware}
 
 
 % Benefits of virtualization.
 % ---------------------------
 
-Virtualization provides enables better IT infrastructure management with benefits like \cite{website:intel-VT}:
+Virtualization provides enables better IT infrastructure management with benefits like\cite{website:intel-VT}:
 
 \begin{itemize}
   
@@ -330,7 +330,7 @@ to Cloud computing.
 Cloud Computing was a concept first publicly announced by John McCarthy in 1961 
 (in a speech given to celebrate MIT's centennial). He saw a future in which computing 
 power and even specific applications could be sold through the utility 
-business model like water or electricity \cite{garfinkel1999architects}.
+business model like water or electricity\cite{garfinkel1999architects}.
 This concept and  supporting technologies evolved over the period and has taken us 
 to the reality where computing resources are served as a utility. 
 Technologies relating to CPU Power, network bandwidth, memory capacity 
@@ -342,7 +342,7 @@ and academics, as well as CIOs and business leaders, due to its potential to
 reduce cost and risk, increase revenue, and enhance total customer experience.\cite{weinman2011future}
 It has been difficult to give a concise definition for Cloud Computing 
 and related terms. According to the U.S. National Institute of Standards 
-and Technology (NIST), \cite{mell2009nist}  "Cloud computing is a model for enabling convenient,
+and Technology (NIST),\cite{mell2009nist}  "Cloud computing is a model for enabling convenient,
 on-demand network access to a shared pool of configurable computing resources
 (e.g., networks, servers, storage, applications, and services) that can 
 be rapidly provisioned and released with minimal management 
@@ -352,7 +352,7 @@ virtual machine monitor (VMM) which enables applications such as server consolid
 facilities [14], distributed web services [43], secure computing platforms [12, 16] and application
 mobility
 
-The essential characteristics are \cite{mell2009nist} :
+The essential characteristics are\cite{mell2009nist} :
 
 \begin{itemize}
   \item \emph{On-demand self services} \\ Provision resources without human
@@ -378,18 +378,36 @@ both the private Cloud and the public Cloud with support for data and applicatio
 portability.
 \end{enumerate}
 
-
 \section{Apache Hadoop}
 
-Apache Hadoop \cite{website:apache-hadoop} is a top-level Apache project that includes open source implementations of a distributed file system \cite{website:apache-hdfs} and MapReduce that was inspired by Google's GFS
-\cite{ghemawat2003google} and MapReduce \cite{dean2008mapreduce} projects.
+% need for hadoop
+
+Demand for internet-scale\footnote{Petabytes of data in a distributed file system} analytics like search index building, result ranking, ad placement and personal recommendations have pushed for new platform architectures. 
+
+% what is hadoop
+
+Apache Hadoop\cite{website:apache-hadoop} is a top-level Apache project that includes open source implementations of a distributed file system\cite{website:apache-hdfs} and MapReduce that was inspired by Google's GFS\cite{ghemawat2003google} and MapReduce\cite{dean2008mapreduce} projects.
 
 The open source Apache Hadoop software library is a framework that 
 allows the distributed processing of large data sets across computer cluster using the MapReduce programming model \cite{website:apache-hadoop}. It has a distributed file system, the Hadoop Distributed File System, that provides 
 high-throughput access to application data.
 
-Facebook uses the Apache Hadoop platform to run it messages application \footnote {Facebook Messages gives every 
-Facebook user a facebook.com email address, integrates the display of all e-mail, SMS and chat messages between a pair or group of users, has strong controls over who users receive messages from, and is the foundation of a Social Inbox\cite{borthakur2011apache}.}. Hadoop was chosen because it met the application's reqirements for consistency, availability, partition tolerance, data model and scalability \cite{borthakur2011apache}.
+% users of hadoop
+A wide variety of users have adopted Hadoop:
+
+Facebook uses the Apache Hadoop platform to run it messages application\footnote {Facebook Messages 
+integrates the display of all e-mail, SMS and chat messages between a pair or group of users.\cite{borthakur2011apache}.}. Hadoop was chosen because it met the application's reqirements for consistency, availability, partition tolerance, data model and scalability\cite{borthakur2011apache}.
+
+Ebay uses the Apache Hadoop platform for data mining where they need to process petabytes of data to gain insights
+from their transactinal data. Hadoop has helped EBay in changing how it collects, transforms, and uses data to generate business intelligence\cite {blog:ebay}.
+
+The University of North Carolina at Chapel Hill uses Hadoop for Genomic Sequencing. 
+The Hadoop system allows them to perform very custom analysis which is not found in a traditional business intelligence tool or in a SQL relational type of structure\cite{website:intel-hadoop}.
+
+% benefits of hadoop
+
+The advantage of this technology is that anybody can create an Hadoop cluster that
+does fault tolerant and scalable distributed computing with off the shelf commodity hardware.
 
 
 The Hadoop ecosystem also includes projects like:\cite{website:apache-hadoop}
@@ -398,14 +416,28 @@ The Hadoop ecosystem also includes projects like:\cite{website:apache-hadoop}
 \item \emph{Avro:} A data serialization system.
 \item \emph{Cassandra:} A scalable multi-master database with no single points of failure.
 \item \emph{Chukwa:} A data collection system for managing large distributed systems.
-\item \emph{HBase:} A scalable, distributed database that supports structured data storage for large tables. This was inspired by Google's BigTable.
+\item \emph{HBase:} A scalable, distributed database that supports structured data storage for large tables.
+ This was inspired by Google's BigTable.
 \item \emph{Hive:} A data warehouse infrastructure built on top of Hadoop that provides data summarization and ad hoc querying.
 \item \emph{Mahout:} A Scalable machine learning and data mining library.
 \item \emph{Pig:} A high-level data-flow language and execution framework for parallel computation.
 \item \emph{ZooKeeper:} A high-performance coordination service for distributed applications.
 \end{itemize}
 
+\subsection{Apache HDFS}
+
+Optimized for sequential reads of very large files (TB's - PB's)
+Automatically manage data replication (3x by default) and recovery
+Single view of the file system; any block can be accessed from any server
+
 \subsection{Apache MapReduce}
+
+% What is MapReduce
+% Origin of MapReduce, why the need for MapReduce
+% Implementations of MapReduce
+% Apache Hadoop MapReduce architecture
+% Applications that use MapReduce?
+% MapReduce sucess stories / potential
 
 Google introduced the MapReduce to crunch its huge data sets. 
 It is a programming model and an associated implementation for processing 
@@ -416,8 +448,6 @@ intermediate key. MapReduce runs on a large cluster of commodity machines
 and is highly scalable \cite{dean2008mapreduce}. 
 
 {\bf Google produce MapReduce to process data generated from their web-crawler}
-
-\subsection{Apache HDFS}
 
 \section{OpenNebula}
 
